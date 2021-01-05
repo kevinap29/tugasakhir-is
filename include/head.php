@@ -15,5 +15,11 @@
     <link rel="shortcut icon" href="asset/img/favicon/favicon.ico" type="image/x-icon">
     <link rel="icon" href="asset/img/favicon/favicon.ico" type="image/x-icon">
 
-    <title>Kelompok 4 Integrasi Sistem</title>
+    <?php
+    if ($_GET['page'] == 'home') {
+        echo '<title>Beranda - Kelompok 4</title>';
+    }elseif ($_GET['page'] == 'setting') {
+        echo '<title>Setting - Kelompok 4</title>';
+    }
+    ?>
 </head>

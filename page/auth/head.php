@@ -19,6 +19,8 @@
             echo '<title>REGISTER</title>';
         }elseif ($_GET['page']=='auth') {
             echo '<title>AUTH</title>';
+        }elseif ($_GET['page']=='authLogin') {
+            echo '<title>AUTH</title>';
         }
     ?>
 </head>

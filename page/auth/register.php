@@ -16,7 +16,7 @@
         $password = md5($_POST['password']);
 
         $statment = $conn->prepare("INSERT INTO users (foto,nama,npm,jurusan,semester,username,email,password,google_secret_code) VALUES (?,?,?,?,?,?,?,?,?)");
-        $hasil = $statment->execute(array($name,$npm,$jurusan,$semester,$username,$email,$password,$secret));
+        $hasil = $statment->execute(array($foto,$name,$npm,$jurusan,$semester,$username,$email,$password,$secret));
 
         if ($hasil > 0) {
             echo '<script>window.location="index.php?page=auth"</script>';

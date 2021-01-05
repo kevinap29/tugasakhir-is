@@ -31,7 +31,7 @@
             <h3 class="display-4">Authentikasi</h3>
             <p class="text-muted mb-4">Siapkan hp untuk proses 2-step verification</p>
             <div class="form-group text-center">
-                <img src="<?php echo $qr_code; ?>" alt="">
+                <!-- <img src="<?php /* echo $qr_code;  */?>" alt=""> -->
             </div>
             <form action="authenticator.php" method="post">
                 <?php
