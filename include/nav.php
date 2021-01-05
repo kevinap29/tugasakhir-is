@@ -33,7 +33,7 @@
                 </a>
         </li>
         <li class="nav-item">
-          <a href="index.php?page=api" class="nav-link text-dark font-weight-bold">
+          <a href="index.php?page=api" class="nav-link text-dark font-weight-bold bg-light">
                     <i class="fa fa-mobile-alt mr-3 text-primary fa-fw"></i>
                     API Spek HP
                 </a>

@@ -58,6 +58,10 @@ if (empty($_SESSION['secret'])) {
           include('page/auth/logout.php');
         }elseif ($_GET['page']=='setting') {
           include('page/main/setting.php');
+        }elseif ($_GET['page']=='anggota') {
+          include('page/main/anggota.php');
+        }elseif ($_GET['page']=='api') {
+          include('page/main/list-spek-hp.php');
         }
       ?>
 

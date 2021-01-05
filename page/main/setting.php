@@ -65,6 +65,7 @@ if (isset($_POST['btnUpdate'])) {
                             <script>
                             $(".alert").alert();
                             </script>';
+                header("Refresh:0");
             }
         }
     }elseif($password1 == $password2) {
@@ -122,6 +123,7 @@ if (isset($_POST['btnUpdate'])) {
                             <script>
                             $(".alert").alert();
                             </script>';
+                header("Refresh:0");
             }
         }
     }
@@ -136,7 +138,7 @@ if ($stmt>0) {
 ?>
 
 <div class="container-fluid">
-    <p class="display-4 my-3">Setting Akun</p>
+    <p class="display-4 my-4">Setting Akun</p>
     <div class="row">
         <div class="col-md-9 justify-content-center">
             <form action="index.php?page=setting" method="post" enctype="multipart/form-data">
