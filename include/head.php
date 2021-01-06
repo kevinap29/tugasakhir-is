@@ -22,8 +22,8 @@
         echo '<title>Setting - Kelompok 4</title>';
     }elseif ($_GET['page'] == 'anggota') {
         echo '<title>Anggota - Kelompok 4</title>';
-    }elseif ($_GET['page'] == 'api') {
-        echo '<title>API - Kelompok 4</title>';
+    }elseif ($_GET['page'] == 'listBrand') {
+        echo '<title>List Brand HP - Kelompok 4</title>';
     }
     ?>
 </head>

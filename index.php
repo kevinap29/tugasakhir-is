@@ -60,8 +60,8 @@ if (empty($_SESSION['secret'])) {
           include('page/main/setting.php');
         }elseif ($_GET['page']=='anggota') {
           include('page/main/anggota.php');
-        }elseif ($_GET['page']=='api') {
-          include('page/main/list-spek-hp.php');
+        }elseif ($_GET['page']=='listBrand') {
+          include('page/main/list-brand-hp.php');
         }
       ?>
 
