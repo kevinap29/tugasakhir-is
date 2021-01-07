@@ -24,6 +24,9 @@
         echo '<title>Anggota - Kelompok 4</title>';
     }elseif ($_GET['page'] == 'listBrand') {
         echo '<title>List Brand HP - Kelompok 4</title>';
+    }elseif ($_GET['page'] == 'detailBrand') {
+        $brandName = $_GET['brand'];
+        echo '<title>'.$brandName.' - Kelompok 4</title>';
     }
     ?>
 </head>

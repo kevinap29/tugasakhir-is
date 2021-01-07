@@ -8,9 +8,6 @@
                 <strong>Selamat Datang</strong> <?= $name ?>
             </div>
             
-            <script>
-            $(".alert").alert();
-            </script>
             <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
                 <?php
                 $statement = $conn->prepare("SELECT * FROM users");
@@ -29,7 +26,7 @@
                 ?>
                     <div class="carousel-item <?= $item_class ?>">
                         <img src="asset/img/photo-profile/<?= $user['foto'] ?>" height="500" class="d-block w-100" alt="">
-                        <div class="carousel-caption d-none d-md-block">
+                        <div class="carousel-caption text-warning d-none d-md-block">
                             <h5><?= $user['nama'] ?></h5>
                             <p><?= $user['npm'] ?></p>
                         </div>

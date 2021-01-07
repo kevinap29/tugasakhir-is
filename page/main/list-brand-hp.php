@@ -23,7 +23,7 @@ switch ($pag) {
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => 'http://api-mobilespecs.azharimm.tk/brands?page='.$paginate.'&limit=30&search=&sort=brand:asc',
+  CURLOPT_URL => 'http://api-mobilespecs.azharimm.tk/brands?page='.$paginate.'&limit=30&sort=brand:asc',
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => '',
   CURLOPT_MAXREDIRS => 10,
@@ -38,28 +38,32 @@ curl_close($curl);
 $data = json_decode($response, true);
 
 $page = $data['data']['page'];
-$limit = $data['data']['limit'];
-$last_page = $data['data']['last_page'];
 $brands = $data['data']['brands'];
-$no = 1;
 ?>
 <div class="container-fluid">
     <div class="row">
         <div class="col">
-            <p class="display-4 my-4">API Spek HP - List Brand</p>
-            <div class="row d-flex align-items-stretch">
+            <p class="display-4 my-4">List Brand</p>
+            
+            <div class="row my-3">
+                <?php include('include/pagination.php')?>
+            </div>
+
+            <div class="row">
             <?php
                 foreach ($brands as $brand) { 
             ?>
                 <div class="col-md-4 mb-3">
-                    <div class="card-header border-0 shadow-sm text-center font-weight-bold">
-                        <a id="linkBrands" class="card-link text-white " href="http://">
-                            <h6 class="card-title"><?=$brand['brand']?> <span 
-                            class="badge badge-pill badge-primary" 
-                            data-toggle="tooltip" 
-                            data-placement="top" 
-                            title="Ada <?= $brand['count_devices']?> HP dalam brand <?= $brand['brand'] ?> "><?= $brand['count_devices']?></span></h6>
-                        </a>
+                    <div class="card d-flex align-items-center">
+                        <div class="card-header border-0 shadow-sm text-center font-weight-bold">
+                            <a id="linkBrands" class="card-link text-dark " href="index.php?page=detailBrand&slug=<?=$brand['brand_slug']?>&brand=<?= $brand['brand'] ?>&show=">
+                                <h6 class="card-title"><?=$brand['brand']?> <span 
+                                class="badge badge-pill badge-primary" 
+                                data-toggle="tooltip" 
+                                data-placement="top" 
+                                title="Ada <?= $brand['count_devices']?> HP dalam brand <?= $brand['brand'] ?> "><?= $brand['count_devices']?></span></h6>
+                            </a>
+                        </div>
                     </div>
                 </div>
             <?php
@@ -68,5 +72,4 @@ $no = 1;
             </div>
         </div>
     </div>
-    <?php include('include/pagination.php')?>
 </div>

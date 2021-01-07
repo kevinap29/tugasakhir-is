@@ -1,6 +1,6 @@
-<div class="row justify-content-center">
+<div class="col-md-6">
     <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
+        <ul class="pagination">
             <?php
                 if ($page == 1) {
                     echo '<li class="page-item disabled">';

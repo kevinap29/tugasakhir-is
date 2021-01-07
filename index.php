@@ -29,7 +29,9 @@ if (empty($_SESSION['secret'])) {
 <html lang="en">
   <?php include('include/head.php') ?>
   <body>
+
     <?php include('include/nav.php'); ?>
+
     <!-- Page content holder -->
     <div class="page-content p-5 main-container text-white" id="content">
       <!-- Toggle button -->
@@ -62,12 +64,18 @@ if (empty($_SESSION['secret'])) {
           include('page/main/anggota.php');
         }elseif ($_GET['page']=='listBrand') {
           include('page/main/list-brand-hp.php');
+        }elseif ($_GET['page']=='detailBrand') {
+          include('page/main/detail-brand-hp.php');
         }
       ?>
 
+      
+      <a class="top-link hide " href="" id="js-top">
+        <i class="fas fa-chevron-up    "></i>
+      </a>
     </div>
     <!-- End content -->
-    
+
     <?php include('include/script.php') ?>
   </body>
 </html>
