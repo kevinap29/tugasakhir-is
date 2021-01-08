@@ -38,7 +38,9 @@ $phoneSpec = $data['data']['specifications'];
     $spec_9 = $phoneSpec[9];
     $spec_10 = $phoneSpec[10];
     $spec_11 = $phoneSpec[11];
-    $spec_12 = $phoneSpec[12];
+    if (!empty($phoneSpec[12])){
+        $spec_12 = $phoneSpec[12];
+    }
 //spec title
     $spec_0_title = $spec_0['title'];
     $spec_1_title = $spec_1['title'];
@@ -52,7 +54,10 @@ $phoneSpec = $data['data']['specifications'];
     $spec_9_title = $spec_9['title'];
     $spec_10_title = $spec_10['title'];
     $spec_11_title = $spec_11['title'];
-    $spec_12_title = $spec_12['title'];
+    if (!empty($phoneSpec[12])){
+        $spec_12 = $phoneSpec[12];
+        $spec_12_title = $spec_12['title'];
+    }
 // define detail spec
     $spec_0_specs = $spec_0['specs'];
     $spec_1_specs = $spec_1['specs'];
@@ -64,94 +69,13 @@ $phoneSpec = $data['data']['specifications'];
     $spec_7_specs = $spec_7['specs'];
     $spec_8_specs = $spec_8['specs'];
     $spec_9_specs = $spec_9['specs'];
-    $spec_12_specs = $spec_12['specs'];
-    $spec_12_specs = $spec_12['specs'];
-    $spec_12_specs = $spec_12['specs'];
-
-/* //spesifikasi 0
-    $spec_0 = $phoneSpec[0];
-    $spec_0_title = $spec_0['title'];
-    $spec_0_specs_0 = $spec_0['specs'][0];
-    $spec_0_specs_0_key = $spec_0_specs_0['key'];
-    $spec_0_specs_0_val = $spec_0_specs_0['val'][0];
-//spesifikasi 1
-    $spec_1 = $phoneSpec[1];
-    $spec_1_title = $spec_1['title'];
-    $spec_1_specs_0 = $spec_1['specs'][0];
-    $spec_1_specs_0_key = $spec_1_specs_0['key'];
-    $spec_1_specs_0_val = $spec_1_specs_0['val'][0];
-//spesifikasi 2
-    $spec_2 = $phoneSpec[2];
-    $spec_2_title = $spec_2['title'];
-    //spesifikasi 2 specs 0
-        $spec_2_specs_0 = $spec_2['specs'][0];
-        $spec_2_specs_0_key = $spec_2_specs_0['key'];
-        $spec_2_specs_0_val = $spec_2_specs_0['val'][0];
-    //spesifikasi 2 specs 1
-        $spec_2_specs_1 = $spec_2['specs'][1];
-        $spec_2_specs_1_key = $spec_2_specs_1['key'];
-        $spec_2_specs_1_val = $spec_2_specs_1['val'][0];
-    //spesifikasi 2 specs 2
-        $spec_2_specs_2 = $spec_2['specs'][2];
-        $spec_2_specs_2_key = $spec_2_specs_2['key'];
-        $spec_2_specs_2_val = $spec_2_specs_2['val'][0];
-    //spesifikasi 2 specs 3
-        $spec_2_specs_3 = $spec_2['specs'][3];
-        $spec_2_specs_3_key = $spec_2_specs_3['key'];
-        $spec_2_specs_3_val = $spec_2_specs_3['val'][0];
-    //spesifikasi 2 specs 4
-        $spec_2_specs_4 = $spec_2['specs'][4];
-        $spec_2_specs_4_key = $spec_2_specs_4['key'];
-        $spec_2_specs_4_val = $spec_2_specs_4['val'][0];
-//spesifikasi 3
-    $spec_3 = $phoneSpec[3];
-    $spec_3_title = $spec_3['title'];
-    //spesifikasi 2 specs 0
-        $spec_3_specs_0 = $spec_3['specs'][0];
-        $spec_3_specs_0_key = $spec_3_specs_0['key'];
-        $spec_3_specs_0_val = $spec_3_specs_0['val'][0];
-    //spesifikasi 2 specs 1
-        $spec_3_specs_1 =$spec_3['specs'][1];
-        $spec_3_specs_1_key =$spec_3_specs_1['key'];
-        $spec_3_specs_1_val =$spec_3_specs_1['val'][0];
-    //spesifikasi 2 specs 2
-        $spec_3_specs_2 =$spec_3['specs'][2];
-        $spec_3_specs_2_key =$spec_3_specs_2['key'];
-        $spec_3_specs_2_val =$spec_3_specs_2['val'][0];
-    //spesifikasi 2 specs 3
-        $spec_3_specs_3 =$spec_3['specs'][3];
-        $spec_3_specs_3_key =$spec_3_specs_3['key'];
-        $spec_3_specs_3_val =$spec_3_specs_3['val'][0];
-    //spesifikasi 2 specs 4
-        $spec_3_specs_4 =$spec_3['specs'][4];
-        $spec_3_specs_4_key =$spec_3_specs_4['key'];
-        $spec_3_specs_4_val =$spec_3_specs_4['val'][0];
-
-
-//spesifikasi 12 MISC
-    $spec_12 = $phoneSpec[12];
-    $spec_12_title = $spec_12['title'];
-    //spesifikasi 2 specs 0
-        $spec_12_specs_0 = $spec_12['specs'][0];
-        $spec_12_specs_0_key = $spec_12_specs_0['key'];
-        $spec_12_specs_0_val = $spec_12_specs_0['val'][0];
-    //spesifikasi 2 specs 1
-        $spec_12_specs_1 =$spec_12['specs'][1];
-        $spec_12_specs_1_key =$spec_12_specs_1['key'];
-        $spec_12_specs_1_val =$spec_12_specs_1['val'][0];
-    //spesifikasi 2 specs 2
-        $spec_12_specs_2 =$spec_12['specs'][2];
-        $spec_12_specs_2_key =$spec_12_specs_2['key'];
-        $spec_12_specs_2_val =$spec_12_specs_2['val'][0];
-    //spesifikasi 2 specs 3
-        $spec_12_specs_3 =$spec_12['specs'][3];
-        $spec_12_specs_3_key =$spec_12_specs_3['key'];
-        $spec_12_specs_3_val =$spec_12_specs_3['val'][0];
-    //spesifikasi 2 specs 4
-        $spec_12_specs_4 =$spec_12['specs'][4];
-        $spec_12_specs_4_key =$spec_12_specs_4['key'];
-        $spec_12_specs_4_val =$spec_12_specs_4['val'][0];
- */
+    $spec_10_specs = $spec_10['specs'];
+    $spec_11_specs = $spec_11['specs'];
+    if (!empty($phoneSpec[12])){
+        $spec_12 = $phoneSpec[12];
+        $spec_12_title = $spec_12['title'];
+        $spec_12_specs = $spec_12['specs'];
+    }
 ?>
 
 <div class="container-fluid">
@@ -165,7 +89,9 @@ $phoneSpec = $data['data']['specifications'];
                 <div class="col-md-4">
                     <img src="<?= $phoneImage?>" class="card-img" style="max-width: 540px;" alt="...">
                     <hr class="w-100">
+                    <!-- loop spec 1 / date release -->
                     <p class="font-weight-bold mb-0 ml-3"><?= $spec_1_title ?></p>
+
                     <?php for ($i=0; $i<count($spec_1_specs); $i++) { ?>
                     <dl class="row ml-1 mb-1">
                         <dt class="col-sm-5 mb-0"><small><?= $spec_1_specs[$i]['key'] ?></small></dt>
@@ -174,22 +100,33 @@ $phoneSpec = $data['data']['specifications'];
                         <?php } ?>
                     </dl>
                     <?php } ?>
-                    <p class="font-weight-bold mb-0 ml-3"><?= $spec_12_title ?></p>
+                    <!-- loop spec 11/12 or misc -->
+                    <?php if (empty($spec_12)) { ?>
+                        <p class="font-weight-bold mb-0 ml-3"><?= $spec_11_title ?></p>
+                    <?php } else { ?>
+                        <p class="font-weight-bold mb-0 ml-3"><?= $spec_12_title ?></p>
+                    <?php } ?>
+                    
                     <dl class="row ml-1 mb-1">
-                        <dt class="col-sm-5 mb-0"><small><?= $spec_12_specs_0_key ?></small></dt>
-                        <dd class="col-sm-7 mb-0"><small><?= $spec_12_specs_0_val ?></small></dd>
-
-                        <dt class="col-sm-5 mb-0"><small><?= $spec_12_specs_1_key ?></small></dt>
-                        <dd class="col-sm-7 mb-0"><small><?= $spec_12_specs_1_val ?></small></dd>
-
-                        <dt class="col-sm-5 mb-0"><small><?= $spec_12_specs_2_key ?></small></dt>
-                        <dd class="col-sm-7 mb-0"><small><?= $spec_12_specs_2_val ?></small></dd>
-
-                        <dt class="col-sm-5 mb-0"><small><?= $spec_12_specs_3_key ?></small></dt>
-                        <dd class="col-sm-7 mb-0"><small><?= $spec_12_specs_3_val ?></small></dd>
-
-                        <dt class="col-sm-5 mb-0"><small><?= $spec_12_specs_4_key ?></small></dt>
-                        <dd class="col-sm-7 mb-0"><small><?= $spec_12_specs_4_val ?></small></dd>
+                        <?php   if (empty($spec_12)){  
+                                for ($i=0; $i<count($spec_1_specs); $i++) { 
+                        ?>
+                        <dt class="col-sm-5 mb-0"><small><?= $spec_11_specs[$i]['key'] ?></small></dt>
+                        <?php   for ($j=0; $j<count($spec_1_specs[$i]['val']); $j++) { ?>
+                        <dd class="col-sm-7 mb-0"><small><?= $spec_11_specs[$i]['val'][$j] ?></small></dd>
+                        <?php   } //end for $i
+                                } // end for $j
+                                } // end if 
+                                else { 
+                                for ($i=0; $i<count($spec_1_specs); $i++) { 
+                        ?>
+                        <dt class="col-sm-5 mb-0"><small><?= $spec_12_specs[$i]['key'] ?></small></dt>
+                        <?php   for ($j=0; $j<count($spec_1_specs[$i]['val']); $j++) { ?>
+                        <dd class="col-sm-7 mb-0"><small><?= $spec_12_specs[$i]['val'][$j] ?></small></dd>
+                        <?php   } //end for $i
+                                } //end for $j
+                                } // end else
+                        ?>
                     </dl>
                 </div>
                 <div class="col-md-8">
