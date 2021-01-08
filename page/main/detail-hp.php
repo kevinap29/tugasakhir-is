@@ -79,11 +79,13 @@ $phoneSpec = $data['data']['specifications'];
 ?>
 
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12 text-center card-header bg-dark rounded mb-2">
+    <div class="row align-item-center">
+        <div class="col-md-2 bg-dark mb-2 mx-0">1</div>
+        <div class="col-md-8 text-center card-header bg-dark mb-2 mx-0">
             <h5 class="display-4"><?= $brandName ?></h5>
             <p class="lead"><strong><?= $phoneName ?></strong></p> 
         </div>
+        <div class="col-md-2 bg-dark mb-2 mx-0">2</div>
         <div class="card mb-3 p-3 text-dark">
             <div class="row no-gutters">
                 <div class="col-md-4">
@@ -95,8 +97,11 @@ $phoneSpec = $data['data']['specifications'];
                     <?php for ($i=0; $i<count($spec_1_specs); $i++) { ?>
                     <dl class="row ml-1 mb-1">
                         <dt class="col-sm-5 mb-0"><small><?= $spec_1_specs[$i]['key'] ?></small></dt>
-                        <?php for ($j=0; $j<count($spec_1_specs[$i]['val']); $j++) { ?>
-                        <dd class="col-sm-7 mb-0"><small><?= $spec_1_specs[$i]['val'][$j] ?></small></dd>
+                        <?php   for ($j=0; $j<count($spec_1_specs[$i]['val']); $j++) { 
+                                $explode = explode('.', $spec_1_specs[$i]['val'][$j]);
+                                $implode = implode('. <br>', $explode);
+                        ?>
+                        <dd class="col-sm-7 mb-0"><small><?= $implode ?></small></dd>
                         <?php } ?>
                     </dl>
                     <?php } ?>
@@ -109,22 +114,38 @@ $phoneSpec = $data['data']['specifications'];
                     
                     <dl class="row ml-1 mb-1">
                         <?php   if (empty($spec_12)){  
-                                for ($i=0; $i<count($spec_1_specs); $i++) { 
+                                for ($i=0; $i<count($spec_11_specs); $i++) { 
                         ?>
-                        <dt class="col-sm-5 mb-0"><small><?= $spec_11_specs[$i]['key'] ?></small></dt>
-                        <?php   for ($j=0; $j<count($spec_1_specs[$i]['val']); $j++) { ?>
-                        <dd class="col-sm-7 mb-0"><small><?= $spec_11_specs[$i]['val'][$j] ?></small></dd>
-                        <?php   } //end for $i
-                                } // end for $j
+                        <dt class="col-sm-5 mb-0"><small>
+                        <?php 
+                            if (empty($spec_11_specs[$i]['key'])){
+                                $spec_11_specs[$i]['key'] = 'empty value';
+                                echo $spec_11_specs[$i]['key'];
+                            }
+                            echo $spec_11_specs[$i]['key'];
+                        ?>
+                        </small></dt>
+                        <?php   for ($j=0; $j<count($spec_11_specs[$i]['val']); $j++) { ?>
+                        <dd class="col-sm-7 mb-0"><small>
+                        <?php 
+                            if (empty($spec_11_specs[$i]['val'][$j])){
+                                $spec_11_specs[$i]['val'][$j] = '';
+                                echo $spec_11_specs[$i]['val'][$j];
+                            }
+                            echo $spec_11_specs[$i]['val'][$j];
+                        ?>
+                        </small></dd>
+                        <?php   } //end for $j
+                                } // end for $i
                                 } // end if 
                                 else { 
-                                for ($i=0; $i<count($spec_1_specs); $i++) { 
+                                for ($i=0; $i<count($spec_12_specs); $i++) { 
                         ?>
                         <dt class="col-sm-5 mb-0"><small><?= $spec_12_specs[$i]['key'] ?></small></dt>
                         <?php   for ($j=0; $j<count($spec_1_specs[$i]['val']); $j++) { ?>
                         <dd class="col-sm-7 mb-0"><small><?= $spec_12_specs[$i]['val'][$j] ?></small></dd>
-                        <?php   } //end for $i
-                                } //end for $j
+                        <?php   } //end for $j
+                                } //end for $i
                                 } // end else
                         ?>
                     </dl>
@@ -135,36 +156,84 @@ $phoneSpec = $data['data']['specifications'];
 
                         <div class="p-5 bg-white rounded shadow mb-5">
                         <!-- Lined tabs-->
-                        <ul id="myTab2" role="tablist" class="nav nav-tabs nav-pills with-arrow lined flex-column flex-sm-row text-center">
+                        <ul id="specTab" role="tablist" class="nav nav-tabs nav-pills with-arrow lined flex-column flex-sm-row text-center">
+                            <?php   for ($i=0; $i<count($phoneSpec)-1; $i++) {
+                                $explode = explode(' ', $phoneSpec[$i]['title']);
+                                $implode = implode('', $explode);
+                            ?>
                             <li class="nav-item flex-sm-fill">
-                                <a id="home2-tab" data-toggle="tab" href="#home2" role="tab" aria-controls="home2" aria-selected="true" class="nav-link text-uppercase font-weight-bold mr-sm-3 rounded-0 active">Home</a>
+                                <a 
+                                id="<?= $implode ?>-tab" 
+                                data-toggle="tab" 
+                                href="#<?= $implode ?>" 
+                                role="tab" 
+                                aria-controls="<?= $implode ?>" 
+                                aria-selected="true"
+                                class="nav-link text-uppercase font-weight-bold mr-sm-0 rounded-0
+                                <?php 
+                                switch ($implode) {
+                                    case 'Network':
+                                        echo 'active"';
+                                        break;
+                                    case 'Launch':
+                                        echo 'd-none m-0 p-0';
+                                        break;
+                                    case 'Misc':
+                                        echo 'd-none m-0 p-0';
+                                        break;
+                                    default:
+                                        echo '';
+                                        break;
+                                }
+                                ?>"
+                                >
+                                    <?= $phoneSpec[$i]['title'] ?>
+                                </a>
                             </li>
-                            <li class="nav-item flex-sm-fill">
-                                <a id="profile2-tab" data-toggle="tab" href="#profile2" role="tab" aria-controls="profile2" aria-selected="false" class="nav-link text-uppercase font-weight-bold mr-sm-3 rounded-0">Profile</a>
-                            </li>
-                            <li class="nav-item flex-sm-fill">
-                                <a id="contact2-tab" data-toggle="tab" href="#contact2" role="tab" aria-controls="contact2" aria-selected="false" class="nav-link text-uppercase font-weight-bold rounded-0">Contact</a>
-                            </li>
+                            <?php } ?>
                         </ul>
-                        <div id="myTab2Content" class="tab-content">
-                            <div id="home2" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-5 show active">
-                                <p class="leade font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                                irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                <p class="leade font-italic mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                                irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <div id="specTabContent" class="tab-content">
+                        <?php   for ($i=0; $i<count($phoneSpec); $i++) {
+                                $explode = explode(' ', $phoneSpec[$i]['title']);
+                                $implode = implode('', $explode);
+                        ?> 
+                            <div 
+                            id="<?= $implode ?>" 
+                            role="tabpanel" 
+                            aria-labelledby="<?= $implode ?>-tab"
+                            class="tab-pane fade px-4 py-5
+                            <?php
+                            switch ($implode) {
+                                case 'Network':
+                                    echo 'show active"';
+                                    break;
+                                case 'Launch':
+                                    echo 'd-none';
+                                    break;
+                                case 'Misc':
+                                    echo 'd-none';
+                                    break;
+                                default:
+                                    echo '';
+                                    break;
+                            } //end switch
+                            
+                            ?>  
+                            ">
+                                <!-- loop spesifikasi -->
+                                <?php for ($j=0; $j<count($phoneSpec[$i]['specs']); $j++) { ?>
+                                <dl class="row ml-1 mb-1">
+                                    <dt class="col-sm-5 mb-0"><small>
+                                    <?= $phoneSpec[$i]['specs'][$j]['key'] ?></small></dt>
+                                    <?php   for ($k=0; $k<count($phoneSpec[$i]['specs'][$j]['val']); $k++) { ?>
+                                    <dd class="col-sm-7 mb-0"><small><?= $phoneSpec[$i]['specs'][$j]['val'][$k] ?></small></dd>
+                                    <?php } ?>
+                                </dl>
+                                <?php } ?>
                             </div>
-                            <div id="profile2" role="tabpanel" aria-labelledby="profile-tab" class="tab-pane fade px-4 py-5">
-                                <p class="leade font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                                irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                <p class="leade font-italic mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                                irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                            </div>
-                            <div id="contact2" role="tabpanel" aria-labelledby="contact-tab" class="tab-pane fade px-4 py-5">
-                                <p class="leade font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                                irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                <p class="leade font-italic mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                                irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                            </div>
+                            <?php 
+                            } // end for $i
+                            ?>
                         </div>
                         <!-- End lined tabs -->
                     </div>
