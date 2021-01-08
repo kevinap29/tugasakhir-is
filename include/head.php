@@ -26,7 +26,11 @@
         echo '<title>List Brand HP - Kelompok 4</title>';
     }elseif ($_GET['page'] == 'detailBrand') {
         $brandName = $_GET['brand'];
-        echo '<title>'.$brandName.' - Kelompok 4</title>';
+        echo '<title>'.$brandName.'</title>';
+    }elseif ($_GET['page'] == 'detailHP') {
+        $brand_name = $_GET['bphone'];
+        $phone_name = $_GET['nphone'];
+        echo '<title>'.$brand_name.' - '.$phone_name.'</title>';
     }
     ?>
 </head>

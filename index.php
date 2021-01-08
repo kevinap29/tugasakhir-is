@@ -66,6 +66,8 @@ if (empty($_SESSION['secret'])) {
           include('page/main/list-brand-hp.php');
         }elseif ($_GET['page']=='detailBrand') {
           include('page/main/detail-brand-hp.php');
+        }elseif ($_GET['page']=='detailHP') {
+          include('page/main/detail-hp.php');
         }
       ?>
 

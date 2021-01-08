@@ -25,7 +25,7 @@
                 $item_class = ($no == $user['id']) ? $active : $nonActive;
                 ?>
                     <div class="carousel-item <?= $item_class ?>">
-                        <img src="asset/img/photo-profile/<?= $user['foto'] ?>" height="500" class="d-block w-100" alt="">
+                        <img src="asset/img/photo-profile/<?= $user['foto'] ?>" style="max-height: 500px; min-width: 100%;" class="d-block" alt="">
                         <div class="carousel-caption text-warning d-none d-md-block">
                             <h5><?= $user['nama'] ?></h5>
                             <p><?= $user['npm'] ?></p>

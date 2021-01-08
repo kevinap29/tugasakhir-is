@@ -62,7 +62,8 @@ $phones = $data['data']['phones'];
                         <img src="<?= $phone['phone_img_url'] ?>" class="card-img-top p-3" alt="..." style="max-width: 300px; max-height:300px">
                         
                         <div class="card-footer">
-                            <a class="btn btn-primary col-12" href="index.php?page=detailHP?bslug=<?=$brand_slug?>&pslug=<?= $phone['phone_name_slug'] ?>" role="button">Detail</a>
+                            <a class="btn btn-primary col-12" href="index.php?page=detailHP&bslug=<?=$brand_slug?>&pslug=<?= $phone['phone_name_slug'] ?>&bphone=<?= $phone['brand'] ?>&nphone=<?= $phone['phone_name'] ?>" 
+                            role="button">Cek Spesifikasi</a>
                         </div>
                     </div>
                 </div>
