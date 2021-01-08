@@ -79,13 +79,15 @@ $phoneSpec = $data['data']['specifications'];
 ?>
 
 <div class="container-fluid">
-    <div class="row align-item-center">
-        <div class="col-md-2 bg-dark mb-2 mx-0">1</div>
+    <div class="row d-flex align-item-center">
+        <div class="col-md-2 bg-dark mb-2">
+            <a href="index.php?page=detailBrand&slug=<?= $brand_slug ?>&brand=<?= $brand_name ?>&show=" role="button" class="btn btn-secondary btn-block my-5"><i class="fas fa-backward    "></i></a>
+        </div>
         <div class="col-md-8 text-center card-header bg-dark mb-2 mx-0">
             <h5 class="display-4"><?= $brandName ?></h5>
             <p class="lead"><strong><?= $phoneName ?></strong></p> 
         </div>
-        <div class="col-md-2 bg-dark mb-2 mx-0">2</div>
+        <div class="col-md-2 bg-dark mb-2 mx-0"></div>
         <div class="card mb-3 p-3 text-dark">
             <div class="row no-gutters">
                 <div class="col-md-4">
@@ -142,7 +144,7 @@ $phoneSpec = $data['data']['specifications'];
                                 for ($i=0; $i<count($spec_12_specs); $i++) { 
                         ?>
                         <dt class="col-sm-5 mb-0"><small><?= $spec_12_specs[$i]['key'] ?></small></dt>
-                        <?php   for ($j=0; $j<count($spec_1_specs[$i]['val']); $j++) { ?>
+                        <?php   for ($j=0; $j<count($spec_12_specs[$i]['val']); $j++) { ?>
                         <dd class="col-sm-7 mb-0"><small><?= $spec_12_specs[$i]['val'][$j] ?></small></dd>
                         <?php   } //end for $j
                                 } //end for $i
@@ -223,10 +225,9 @@ $phoneSpec = $data['data']['specifications'];
                                 <!-- loop spesifikasi -->
                                 <?php for ($j=0; $j<count($phoneSpec[$i]['specs']); $j++) { ?>
                                 <dl class="row ml-1 mb-1">
-                                    <dt class="col-sm-5 mb-0"><small>
-                                    <?= $phoneSpec[$i]['specs'][$j]['key'] ?></small></dt>
+                                    <dt class="col-sm-5 mb-0"><?= $phoneSpec[$i]['specs'][$j]['key'] ?></dt>
                                     <?php   for ($k=0; $k<count($phoneSpec[$i]['specs'][$j]['val']); $k++) { ?>
-                                    <dd class="col-sm-7 mb-0"><small><?= $phoneSpec[$i]['specs'][$j]['val'][$k] ?></small></dd>
+                                    <dd class="col-sm-7 mb-0"><?= $phoneSpec[$i]['specs'][$j]['val'][$k] ?></dd>
                                     <?php } ?>
                                 </dl>
                                 <?php } ?>

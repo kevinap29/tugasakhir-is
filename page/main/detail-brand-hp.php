@@ -1,4 +1,5 @@
 <?php
+$pag = $_GET['pag'];
 $brand_slug = $_GET['slug'];
 $show_more = $_GET['show'];//set limit 2000 for show all content
 $default_show = 100;
@@ -38,7 +39,7 @@ $phones = $data['data']['phones'];
 
             <div class="row my-3 d-flex justify-content-center">
                 <div class="col-md-1">
-                    <a href="index.php?page=listBrand&pag=1" role="button" class="btn btn-secondary btn-block"><i class="fas fa-backward    "></i></a>
+                    <a href="index.php?page=listBrand&pag=<?= $pag ?>" role="button" class="btn btn-secondary btn-block"><i class="fas fa-backward    "></i></a>
                 </div>
                 <div class="col-md-2 ml-auto">
                     <!-- <button type="button" name="" id="" class="btn btn-secondary btn-block"><i class="fas fa-forward    "></i></i></button> -->
