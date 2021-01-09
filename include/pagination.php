@@ -1,4 +1,4 @@
-<div class="col-md-6">
+<div class="col-md-4">
     <nav aria-label="Page navigation">
         <ul class="pagination">
             <?php

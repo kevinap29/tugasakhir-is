@@ -56,7 +56,7 @@ $brands = $data['data']['brands'];
                 <div class="col-md-4 mb-3">
                     <div class="card d-flex align-items-center">
                         <div class="card-header border-0 shadow-sm text-center font-weight-bold">
-                            <a id="linkBrands" class="card-link text-dark " href="index.php?page=detailBrand&slug=<?=$brand['brand_slug']?>&brand=<?= $brand['brand'] ?>&pag=<?= $pag ?>&show=">
+                            <a id="linkBrands" class="card-link text-dark " href="index.php?page=detailBrand&slug=<?=$brand['brand_slug']?>&brand=<?= $brand['brand'] ?>&pag=<?= $pag ?>&show=<?= $brand['count_devices']?>">
                                 <h6 class="card-title"><?=$brand['brand']?> <span 
                                 class="badge badge-pill badge-primary" 
                                 data-toggle="tooltip" 

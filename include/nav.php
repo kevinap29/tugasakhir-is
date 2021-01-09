@@ -1,6 +1,6 @@
 <!-- Vertical navbar -->
 <div class="vertical-nav bg-white" id="sidebar">
-      <div class="py-4 px-3 mb-4 bg-light">
+      <div class="py-4 px-3 mb-4 bg-secondary text-white">
         <div class="media d-flex align-items-center"><img src="asset/img/photo-profile/<?php
           if ($foto != 'default.jpg') {
             $image = explode('.',$foto); 
@@ -11,7 +11,7 @@
         ?>
         " alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
           <div class="media-body p-1">
-            <h5 class="m-0 text-uppercase"><?= $username ?> <small class="text-muted"> (<?= $npm ?>) </small></h5>
+            <h5 class="m-0 text-uppercase"><?= $username ?> <small class=""> (<?= $npm ?>) </small></h5>
             <p class="font-weight-bold text-uppercase mb-0"><?= $jurusan ?></p>
           </div>
         </div>

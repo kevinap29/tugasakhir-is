@@ -1,4 +1,6 @@
 <?php
+$pag = $_GET['pag'];
+$show = $_GET['show'];
 $brand_slug = $_GET['bslug'];
 $phone_slug = $_GET['pslug'];
 $brand_name = $_GET['bphone'];
@@ -81,7 +83,7 @@ $phoneSpec = $data['data']['specifications'];
 <div class="container-fluid">
     <div class="row d-flex align-item-center">
         <div class="col-md-2 bg-dark mb-2">
-            <a href="index.php?page=detailBrand&slug=<?= $brand_slug ?>&brand=<?= $brand_name ?>&show=" role="button" class="btn btn-secondary btn-block my-5"><i class="fas fa-backward    "></i></a>
+            <a href="index.php?page=detailBrand&slug=<?= $brand_slug ?>&brand=<?= $brand_name ?>&show=<?= $show ?>&pag=<?= $pag ?>" role="button" class="btn btn-secondary btn-block my-5"><i class="fas fa-backward    "></i></a>
         </div>
         <div class="col-md-8 text-center card-header bg-dark mb-2 mx-0">
             <h5 class="display-4"><?= $brandName ?></h5>
@@ -91,7 +93,7 @@ $phoneSpec = $data['data']['specifications'];
         <div class="card mb-3 p-3 text-dark">
             <div class="row no-gutters">
                 <div class="col-md-4">
-                    <img src="<?= $phoneImage?>" class="card-img" style="max-width: 540px;" alt="...">
+                    <img src="<?= $phoneImage?>" class="card-img" style="max-width: 200px; max-height: 240px;" alt="...">
                     <hr class="w-100">
                     <!-- loop spec 1 / date release -->
                     <p class="font-weight-bold mb-0 ml-3"><?= $spec_1_title ?></p>

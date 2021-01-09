@@ -41,7 +41,7 @@ if (empty($_SESSION['secret'])) {
           <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i class="fa fa-bars "></i></button>
         </div>
         <div class="col-md-4 ml-auto d-flex justify-content-end">
-          <div class="btn-group dropleft">
+          <div class="btn-group dropdown">
             <button class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4 drowdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fa fa-cog "></i>
             </button>
