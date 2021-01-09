@@ -45,12 +45,16 @@ $brands = $data['data']['brands'];
         <div class="col">
             <p class="display-4 my-4">List Brand</p>
             
-            <div class="row my-3">
+            <div class="row my-3 d-flex">
                 <?php include('include/pagination.php')?>
+                <?php include('include/search.php') ?>
             </div>
 
             <div class="row">
             <?php
+                if (empty($brands)) {
+                    header('location: index.php?page=empty-page');
+                }
                 foreach ($brands as $brand) { 
             ?>
                 <div class="col-md-4 mb-3">
