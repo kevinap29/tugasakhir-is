@@ -5,6 +5,7 @@ $brand_slug = $_GET['bslug'];
 $phone_slug = $_GET['pslug'];
 $brand_name = $_GET['bphone'];
 $phone_name = $_GET['nphone'];
+$count = $_GET['devices'];
 
 $curl = curl_init();
 
@@ -83,7 +84,7 @@ $phoneSpec = $data['data']['specifications'];
 <div class="container-fluid">
     <div class="row d-flex align-item-center">
         <div class="col-md-2 bg-dark mb-2">
-            <a href="index.php?page=detailBrand&slug=<?= $brand_slug ?>&brand=<?= $brand_name ?>&show=<?= $show ?>&pag=<?= $pag ?>" role="button" class="btn btn-secondary btn-block my-5"><i class="fas fa-backward    "></i></a>
+            <a href="index.php?page=detailBrand&slug=<?= $brand_slug ?>&brand=<?= $brand_name ?>&devices=<?=$count?>&show=<?= $show ?>&pag=<?= $pag ?>" role="button" class="btn btn-secondary btn-block my-5"><i class="fas fa-backward    "></i></a>
         </div>
         <div class="col-md-8 text-center card-header bg-dark mb-2 mx-0">
             <h5 class="display-4"><?= $brandName ?></h5>

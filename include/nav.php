@@ -38,6 +38,12 @@
                     API Spek HP
                 </a>
         </li>
+        <li class="nav-item">
+          <a href="index.php?page=translate" class="nav-link text-dark font-weight-bold bg-light">
+                    <i class="fa fa-language mr-3 text-primary fa-fw"></i>
+                    API Google Translate
+                </a>
+        </li>
       </ul>
     </div>
     <!-- End vertical navbar -->

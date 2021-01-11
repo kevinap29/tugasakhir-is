@@ -2,23 +2,15 @@
 $pag = $_GET['pag'];
 $brand_slug = $_GET['slug'];
 $brand = $_GET['brand'];
-$show_more = $_GET['show'];//set limit 2000 for show all content
+$show = $_GET['show'];//default limit
+$count = $_GET['devices'];
 $default_show = 20;
-if (isset($_POST['btnShow'])) {
-    header('Location: index.php?page=detailBrand&slug='.$brand_slug.'&brand='.$brand.'&pag='.$pag.'&show='.$_POST['show'].'');
+if ($count <= $default_show) {
+    $show = $count;
 }
-if (empty($show_more)) {
-    $show = $default_show;
-}elseif ($show_more > 100) {
-    $show = $show_more/2;
-}elseif ($show_more < 100) {
-    if ($show_more > 20) {
-        $show = $show_more/2;
-    }else{
-        $show = $show_more;
-    }
-}else {
-    $show = $show_more;
+
+if (isset($_POST['btnShow'])) {
+    header('Location: index.php?page=detailBrand&slug='.$brand_slug.'&brand='.$brand.'&pag='.$pag.'&show='.$_POST['show'].'&devices='.$count.'');
 }
 
 $curl = curl_init();
@@ -38,8 +30,11 @@ $response = curl_exec($curl);
 curl_close($curl);
 $data = json_decode($response, true);
 
-$limit = $data['data']['limit'];
-$phones = $data['data']['phones'];
+$limit = '';
+$limit = isset($data['data']['limit']) ? $data['data']['limit'] : '';
+$phones = '';
+// pemeriksaan menggunakan fungsi isset()
+$phones = isset($data['data']['phones']) ? $data['data']['phones'] : '';
 ?>
 
 <div class="container-fluid">
@@ -52,24 +47,40 @@ $phones = $data['data']['phones'];
                 <div class="col-md-1">
                     <a href="index.php?page=listBrand&pag=<?= $pag ?>" role="button" class="btn btn-secondary btn-block"><i class="fas fa-backward    "></i></a>
                 </div>
-                <div class="col-md-4 ml-auto">
+                <div class="col-md-3 ml-auto">
                     <form method="post" class="form-inline">
                         <div class="form-group">
                             <div class="input-group-prepend">
-                                <div class="input-group-text">Show</div>
+                                <div class="input-group-text" for="show">Show</div>
                             </div>
-                            <input type="show" name="show" id="show" class="form-control" placeholder="Tampilkan">
+                            <select class="custom-select" name="show" id="show">
+                            <?php
+                            $nilai = 2000;
+                            $lipat = 4;
+                            for ($i=1; $i <= $nilai ; $i++) { 
+                                $bagi = $i % $lipat;
+                                if ($bagi == 0) {
+                                    echo '<option value="'.$i.'">'.$i.'</option>';
+                                }
+                            }
+                            ?>
+                            </select>
                             <button role="button" class="btn btn-secondary" type="submit" name="btnShow">Go</button>
                         </div>
                     </form>
                 </div>
                 <div class="col-md-1 ml-auto">
-                    <a href="index.php?page=detailBrand&slug=<?=$brand_slug?>&brand=<?=$brand?>&pag=<?=$pag?>&show=<?=$default_show?>" type="button" class="btn btn-secondary btn-block"><i class="fas fa-sync-alt    "></i></i></a>
+                    <a href="index.php?page=detailBrand&slug=<?=$brand_slug?>&brand=<?=$brand?>&pag=<?=$pag?>&show=<?=$default_show?>&devices=<?=$count?>" type="button" class="btn btn-secondary btn-block"><i class="fas fa-sync-alt    "></i></i></a>
                 </div>
             </div>
 
             <div class="row d-flex align-items-stretch ">
             <?php
+            if (empty($phones)) {
+                echo    '<div class="col-md-12 my-3">
+                        <p class="lead text-center">Data tidak ditemukan/bermasalah</p>
+                        </div>';
+            }else {
             foreach ($phones as $phone) {
                 
             ?>
@@ -82,30 +93,27 @@ $phones = $data['data']['phones'];
                         </span>
                         </div>
 
-                        <img src="<?= $phone['phone_img_url'] ?>" class="card-img-top p-3" alt="..." style="max-width: 300px; max-height:300px">
+                        <img src="<?= $phone['phone_img_url'] ?>" class="card-img-top p-3" alt="..." style="max-width: 250px; height:300px">
                         
                         <div class="card-footer">
-                            <a class="btn btn-primary col-12" href="index.php?page=detailHP&bslug=<?=$brand_slug?>&pslug=<?= $phone['phone_name_slug'] ?>&bphone=<?= $phone['brand'] ?>&nphone=<?= $phone['phone_name'] ?>&pag=<?=$pag ?>&show=<?=$show ?>" 
+                            <a class="btn btn-primary col-12" 
+                            href="index.php?page=detailHP&bslug=<?=$brand_slug?>&pslug=<?= $phone['phone_name_slug'] ?>&bphone=<?= $phone['brand'] ?>&nphone=<?= $phone['phone_name'] ?>&pag=<?=$pag ?>&show=<?=$show ?>&devices=<?=$count?>" 
                             role="button">Cek Spesifikasi</a>
                         </div>
                     </div>
                 </div>
             <?php
-            }//end foreach
+            }// end foreach
+            }//end else
             ?>
             </div>
 
             <div class="row d-flex justify-content-center">
                 <div class="col-md-4 ">
                     <?php
-                        if (empty($_GET['show'])) {
-                            echo '<a href="index.php?page=detailBrand&slug='.$brand_slug.'&brand='.$brand.'&pag='.$pag.'&show=2000" role="button" class="btn btn-secondary btn-block">
+                        if ($count > 20 && $count != $show ) {
+                            echo '<a href="index.php?page=detailBrand&slug='.$brand_slug.'&brand='.$brand.'&pag='.$pag.'&devices='.$count.'&show='.$count.'" role="button" class="btn btn-secondary btn-block">
                             Show More</i></a>';
-                        }elseif ($_GET['show'] < 100) {
-                            echo '<a href="index.php?page=detailBrand&slug='.$brand_slug.'&brand='.$brand.'&pag='.$pag.'&show=2000" role="button" class="btn btn-secondary btn-block">
-                            Show More</i></a>';
-                        }elseif ($_GET['show'] > 100) {
-                            
                         }
                     ?>
                 </div>

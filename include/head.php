@@ -26,11 +26,17 @@
         echo '<title>List Brand HP - Kelompok 4</title>';
     }elseif ($_GET['page'] == 'detailBrand') {
         $brandName = $_GET['brand'];
-        echo '<title>'.$brandName.'</title>';
+        echo '<title>Brand - '.$brandName.'</title>';
     }elseif ($_GET['page'] == 'detailHP') {
         $brand_name = $_GET['bphone'];
         $phone_name = $_GET['nphone'];
         echo '<title>'.$brand_name.' - '.$phone_name.'</title>';
+    }elseif ($_GET['page']=='search-page') {
+        $query = $_GET['q'];
+        $q = urldecode($query);
+        echo '<title>Mencari - '.$q.'</title>';
+    }elseif ($_GET['page'] == 'translate') {
+        echo '<title>Online Translation by Google Translate - Kelompok 4</title>';
     }
     ?>
 </head>

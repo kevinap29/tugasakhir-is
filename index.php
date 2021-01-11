@@ -72,6 +72,8 @@ if (empty($_SESSION['secret'])) {
           include('page/main/empty-page.php');
         }elseif ($_GET['page']=='search-page') {
           include('page/main/search-page.php');
+        }elseif ($_GET['page']=='translate') {
+          include('page/main/translate.php');
         }
       ?>
 
